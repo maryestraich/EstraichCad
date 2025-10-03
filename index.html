@@ -79,12 +79,12 @@
 </head>
 <body>
 
-<h1>Cadastro de Clientes</h1>
+<h1>Cadastro de Clientes Estraich's</h1>
 
 <form>
   <input type="text" id="nome" placeholder="Nome">
   <input type="email" id="email" placeholder="Email">
-  <input type="tel" id="telefone" placeholder="Telefone">
+  <input type="tel" id="celular" placeholder="Celular">
   <button type="button" onclick="cadastrarCliente()">Cadastrar</button>
   <button type="button" onclick="gerarPDF()">Salvar em PDF</button>
 </form>
@@ -94,7 +94,7 @@
     <tr>
       <th>Nome</th>
       <th>Email</th>
-      <th>Telefone</th>
+      <th>Celular</th>
     </tr>
   </thead>
   <tbody></tbody>
@@ -107,22 +107,22 @@
 function cadastrarCliente() {
   const nome = document.getElementById('nome').value.trim();
   const email = document.getElementById('email').value.trim();
-  const telefone = document.getElementById('telefone').value.trim();
+  const telefone = document.getElementById('celular').value.trim();
  
-  if (!nome || !email || !telefone) {
+  if (!nome || !email || !celular) {
     alert('Preencha todos os campos!');
     return;
   }
 
   const tabela = document.querySelector('#tabela tbody');
   const linha = document.createElement('tr');
-  linha.innerHTML = `<td>${nome}</td><td>${email}</td><td>${telefone}</td>`;
+  linha.innerHTML = `<td>${nome}</td><td>${email}</td><td>${celular}</td>`;
  
   tabela.appendChild(linha);
  
   document.getElementById('nome').value = '';
   document.getElementById('email').value = '';
-  document.getElementById('telefone').value = '';
+  document.getElementById('celular').value = '';
 }
 
 function gerarPDF() {
@@ -130,7 +130,7 @@ function gerarPDF() {
   const doc = new jsPDF();
  
   doc.setFontSize(14);
-  doc.text('Lista de Clientes', 14, 14);
+  doc.text('Lista de Clientes Estraich', 14, 14);
  
   const linhasTabela = document.querySelectorAll('#tabela tbody tr');
   const dados = [];
@@ -139,11 +139,11 @@ function gerarPDF() {
     const nome = linha.children[0].innerText;
     const email = linha.children[1].innerText;
     const telefone = linha.children[2].innerText;
-    dados.push([nome, email, telefone]);
+    dados.push([nome, email, celular]);
   });
  
   doc.autoTable({
-    head: [['Nome', 'Email', 'Telefone']],
+    head: [['Nome', 'Email', 'Celular']],
     body: dados,
     startY: 20,
     styles: { fontSize: 10, cellPadding: 3 },
