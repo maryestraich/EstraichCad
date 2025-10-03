@@ -86,7 +86,7 @@
   <input type="email" id="email" placeholder="Email">
   <input type="tel" id="celular" placeholder="Celular">
   <button type="button" onclick="cadastrarCliente()">Cadastrar</button>
-  <button type="button" onclick="gerarPDF()">Salvar em PDF</button>
+  <button type="button" onclick="gerarON()">Salvar ON</button>
 </form>
 
 <table id="tabela">
@@ -125,7 +125,7 @@ function cadastrarCliente() {
   document.getElementById('celular').value = '';
 }
 
-function gerarPDF() {
+function gerarON() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
  
